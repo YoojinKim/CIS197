@@ -56,6 +56,7 @@ var getBlock = function () {
   return blocks[selection];
 };
 
+// Merge Block to the background to determine which squares are occupied
 function mergeBlock (board, block, pos) {
   var merged = []
   for (var i = 0; i < board.length; i++) {
@@ -75,6 +76,7 @@ function mergeBlock (board, block, pos) {
   return merged;
 };
 
+// Determines if a particular line is filled
 var filled = function (row) {
   for (var i = 0; i < row.length; i++) {
     if (row[i] === 0) {
@@ -84,6 +86,7 @@ var filled = function (row) {
   return true;
 };
 
+// Search for any line that is filled and removes it
 var count = 0;
 var inspectBoard = function (board, score) {
   var line = Array(board.length);
@@ -111,6 +114,7 @@ var inspectBoard = function (board, score) {
   return line;
 };
 
+// Generates each rows
 var Row = React.createClass({
   render: function () {
     var key = 0;
@@ -138,9 +142,13 @@ var Tetris = React.createClass({
     case 13: this.startGame(); break;
     // Space Bar
     case 32: this.drop(); break;
+    // Left
     case 37: this.left(); break;
+    // Up
     case 38: this.rotate(); break;
+    // Right
     case 39: this.right(); break;
+    // Down
     case 40: this.down(); break;
     }
 
@@ -184,6 +192,7 @@ var Tetris = React.createClass({
       var pos = this.state.pos.slice(0);
       pos[1] += 1;
       if (this.isValidMove(this.state.board, this.state.block, pos)) {
+        // Merges block to background and search for any filled lines
         var board = inspectBoard(this.state.board);
         this.setState({board: board, pos: pos, });
       } else {
@@ -270,14 +279,14 @@ var Tetris = React.createClass({
 
     return (
     <div className="game">
-    <div class="row">
-    <div class="col-sm-8">
-    <div className="board">{rows}</div>
-    </div>
-    <div class="col-sm-4">
-    <div className="score">{score}</div>
-    </div>
-    </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div className="board">{rows}</div>
+        </div>
+        <div class="col-sm-4">
+          <div className="score">{score}</div>
+        </div>
+      </div>
     </div>
     );
   }
