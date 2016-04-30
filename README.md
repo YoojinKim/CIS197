@@ -1,14 +1,7 @@
 # CIS197
 
-Tetris Game built using React
+Tetris Game built using React, delpolyed on Heroku
+Link: https://pure-meadow-24260.herokuapp.com/
 
-Enter: Start 
-
-Left Arrow : Left
-
-Right Arrow : Right
-
-Down Arrow : Down
-
-Up Arrow : Rotate
+Enter: Start, Up Arrow: Rotate, Space Bar: Hard Drop
 
