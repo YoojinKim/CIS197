@@ -1,8 +1,11 @@
+/*  Basic Unit */
+
 var React = require('react');
 var PropTypes = React.PropTypes;
 
 var Square = React.createClass({
   propTypes: {
+    // Determines if it is an blank space, an occupied space, or a block
     blank: PropTypes.number.isRequired
   },
 
